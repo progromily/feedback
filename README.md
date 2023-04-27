@@ -7,6 +7,23 @@ GET
 
 Параметры: eventId(Long)
 
+Пример ответа:
+```json
+[
+    {
+        "responseId": 52,
+        "responseRate": 3,
+        "userId": 1,
+        "question": {
+            "questionId": 52,
+            "questionTitle": "Чё по борщику?",
+            "eventId": 1,
+            "creatorId": 1
+        }
+    }
+]
+```
+
 Данный запрос предназначен для получения всех ответов на все вопросы по id какого-либо события.
 ---
 
@@ -14,6 +31,23 @@ GET
 /get-responses-by-user
 
 Параметры: eventId(Long), userId(Long)
+
+Пример ответа:
+```json
+[
+    {
+        "responseId": 52,
+        "responseRate": 3,
+        "userId": 1,
+        "question": {
+            "questionId": 52,
+            "questionTitle": "Чё по борщику?",
+            "eventId": 1,
+            "creatorId": 1
+        }
+    }
+]
+```
 
 Данный запрос предназначен для получения всех ответов пользователя по какому-либо мероприятию.
 Подразумевается, что у пользователя в личном кабинете есть список всех мероприятий в которых он
