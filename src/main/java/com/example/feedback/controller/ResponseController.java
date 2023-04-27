@@ -23,6 +23,7 @@ public class ResponseController {
 
 
     @GetMapping("/get-responses")
+    @CrossOrigin(origins = "*")
     public ResponseEntity getResponses(
             @RequestParam(name = "eventId") Long eventId
     ) {
@@ -34,6 +35,7 @@ public class ResponseController {
     }
 
     @GetMapping("/get-responses-by-user")
+    @CrossOrigin(origins = "*")
     public ResponseEntity getResponsesByUser(
             @RequestParam(name = "eventId") Long eventId,
             @RequestParam(name = "userId") Long userId
@@ -46,6 +48,7 @@ public class ResponseController {
     }
 
     @PostMapping("/add-response")
+    @CrossOrigin(origins = "*")
     public ResponseEntity addResponse(
             @RequestParam(name = "responseRate") Integer responseRate,
             @RequestParam(name = "questionId") Long questionId,
@@ -57,14 +60,15 @@ public class ResponseController {
             response.setResponseRate(responseRate);
             response.setQuestion(question);
             response.setUserId(userId);
-            responseRepository.save(response);
-            return ResponseEntity.status(HttpStatus.CREATED).body(null);
+            response = responseRepository.save(response);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
     @PutMapping("/delete-responses")
+    @CrossOrigin(origins = "*")
     public ResponseEntity deleteResponses(
             @RequestParam(name = "userId") Long userId,
             @RequestParam(name = "eventId") Long eventId

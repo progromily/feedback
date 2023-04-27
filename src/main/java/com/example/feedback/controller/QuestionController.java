@@ -26,8 +26,8 @@ public class QuestionController {
             question.setQuestionTitle(questionTitle);
             question.setCreatorId(creatorId);
             question.setEventId(eventId);
-            questionRepository.save(question);
-            return ResponseEntity.status(HttpStatus.CREATED).body(null);
+            question = questionRepository.save(question);
+            return ResponseEntity.status(HttpStatus.CREATED).body(question);
         } else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }

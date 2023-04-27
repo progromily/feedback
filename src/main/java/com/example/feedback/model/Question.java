@@ -1,7 +1,10 @@
 package com.example.feedback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table(name = "question")
@@ -20,4 +23,9 @@ public class Question {
 
     @Column(name = "creator_id")
     private long creatorId;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "question_id", referencedColumnName = "questionId")
+    private List<Response> responses;
 }
